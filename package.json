@@ -33,6 +33,7 @@
     "typescript": "5.2.2"
   },
   "devDependencies": {
+    "@types/three": "^0.179.0",
     "tailwindcss-animate": "^1.0.7"
   }
 }
