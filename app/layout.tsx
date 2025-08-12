@@ -8,7 +8,7 @@ const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
 });
-export const badScript = Bad_Script({
+const badScript = Bad_Script({
     subsets: ["latin"],
   weight: "400",
   variable: "--font-bad-script",
