@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import * as THREE from 'three';
 
 export function HeroSection() {
   const [text, setText] = useState("");
