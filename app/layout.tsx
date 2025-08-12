@@ -32,7 +32,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <body className={`${inter.variable} ${playfair.variable} ${playFairDisplaySC.variable} ${badScript.variable} font-sans antialiased`}>
           <ThemeProvider
             attribute="class"
-            defaultTheme="dark"
+            defaultTheme="light"
             enableSystem={false}
             disableTransitionOnChange={false}
           >
