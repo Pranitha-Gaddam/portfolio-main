@@ -35,7 +35,7 @@ export function HeroSection() {
     (async () => {
       if (!containerRef.current) return;
 
-      const THREE = await import("three");
+      const THREE = (await import("three")) as typeof import("three");
       const { TorusKnotGeometry, BufferGeometry, Float32BufferAttribute } = THREE;
 
       // — Pixel ratio: slightly lower on small screens for calmer motion/brightness —
