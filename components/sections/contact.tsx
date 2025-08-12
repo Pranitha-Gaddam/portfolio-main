@@ -235,10 +235,10 @@ export function ContactSection() {
               transition={{ duration: 0.6, delay: 0.6 }}
               className="bg-gradient-to-r from-amber-100 to-orange-100 dark:from-amber-900/20 dark:to-orange-900/20 p-6 rounded-lg"
             >
-              <h4 className="text-lg italic font-semibold text-gray-900 dark:text-white mb-2">
+              <h4 className="text-lg font-bad-script font-bold text-gray-900 dark:text-white mb-2">
                 Thank You!
               </h4>
-              <p className="text-gray-600 italic dark:text-gray-300 leading-relaxed">
+              <p className="text-gray-600 text-lg font-bad-script dark:text-gray-300">
                 I appreciate your interest in my work. Whether you're looking to collaborate, 
                 have a project in mind, or just want to connect, I'd love to hear from you. 
                 I typically respond within 24 hours.

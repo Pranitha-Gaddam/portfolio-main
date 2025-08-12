@@ -32,7 +32,7 @@ const projectsData = [
     id: 3,
     title: "Pomodoro Study Timer",
     description: "A deep-focus Pomodoro timer with customizable timer, backgrounds, audio, and additional tools for productivity.",
-    image: "https://private-user-images.githubusercontent.com/105523022/443509395-934aaabf-3338-4779-a9ef-606465870c0a.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTQ1MjcyMTksIm5iZiI6MTc1NDUyNjkxOSwicGF0aCI6Ii8xMDU1MjMwMjIvNDQzNTA5Mzk1LTkzNGFhYWJmLTMzMzgtNDc3OS1hOWVmLTYwNjQ2NTg3MGMwYS5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwODA3JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDgwN1QwMDM1MTlaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1jMDI4NmU4ODAxZDliMjFjZjNlOTA0ZjJjNTEwNTA3ZGRkMjFiMTQxMmU2NWI2NzE0Mzg1ODBjNjQ1OGY3NmEzJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.2gJhhG_MeASjd9B0ZGOjiDftHcFH1i4yaW_rUym6sSs",
+    image: "images/pomodoro.png",
     technologies: ["React", "Tailwind CSS", "Vercel"],
     githubUrl: "https://github.com/Pranitha-Gaddam/pomodoro-study-mode",
     liveUrl: "https://pomodoro-study-mode.vercel.app/",
@@ -62,10 +62,9 @@ const projectsData = [
   id: 6,
     title: "Job Scheduler",
     description: "A Simulated Annealing agent created to maximize work scheduling.",
-    image: "",
-    technologies: ["AI", "Spring", "PostgreSQL", "Tailwind CSS", "Heroku", "Vercel"],
-    githubUrl: "https://github.com/Pranitha-Gaddam/Restaurant-Website",
-    liveUrl: "https://restaurant-website-navy-three.vercel.app/",
+    image: "images/jobscheduler.png",
+    technologies: ["AI", "Python"],
+    githubUrl: "https://github.com/Pranitha-Gaddam/Job-Scheduler",
     featured: false
   },
 ];

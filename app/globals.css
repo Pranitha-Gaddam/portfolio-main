@@ -74,8 +74,8 @@
     font-family: var(--font-playfair), serif;
   }
   .font-cinzel { font-family: var(--font-cinzel), serif; }
-  .font-greatvibes { font-family: var(--font-greatvibes), cursive; }
   .font-playfair-display-sc { font-family: var(--font-playfair-display-sc), serif;}
+  .font-bad-script { font-family: var(--font-bad-script), cursive; }
 }
 
 /* Custom scrollbar */

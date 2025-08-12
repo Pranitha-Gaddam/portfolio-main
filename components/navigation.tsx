@@ -68,7 +68,7 @@ export function Navigation() {
           <div className="flex justify-between items-center h-16">
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="font-playfair font-bold text-xl text-gray-900 dark:text-white"
+              className="font-playfair font-bold text-xl text-amber-600 dark:text-white"
             >
               Pranitha Gaddam
             </motion.div>

@@ -33,19 +33,26 @@ export function HeroSection() {
   useEffect(() => {
     let cleanup = () => {};
     (async () => {
-      // Only run in browser
       if (!containerRef.current) return;
 
       const THREE = await import("three");
       const { TorusKnotGeometry, BufferGeometry, Float32BufferAttribute } = THREE;
 
-      // Transparent renderer
+      // — Pixel ratio: slightly lower on small screens for calmer motion/brightness —
+      const isSmallScreen =
+        typeof window !== "undefined" &&
+        window.matchMedia &&
+        window.matchMedia("(max-width: 640px)").matches;
+
       const renderer = new THREE.WebGLRenderer({
         antialias: true,
         alpha: true,
         canvas: canvasRef.current || undefined,
       });
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.setPixelRatio(
+        Math.min(window.devicePixelRatio || 1, isSmallScreen ? 1.75 : 2)
+      );
+
       const bounds = containerRef.current.getBoundingClientRect();
       renderer.setSize(bounds.width, bounds.height, false);
       renderer.setClearColor(0x000000, 0); // transparent
@@ -61,18 +68,18 @@ export function HeroSection() {
       );
       camera.position.set(0, 0.6, 12);
 
-      // Colors (tweak to your theme)
-      const isDark = document.documentElement.classList.contains("dark");
-      const primary = new THREE.Color(isDark ? 0xfbbf24 : 0xd97706); // amber-ish
-      const accent = new THREE.Color(isDark ? 0x93c5fd : 0x1f2937); // soft blue in dark, slate in light
+      // Softer dark-mode palette + normal blending to avoid glow blowout,
+      // warm amber/slate in light mode.
+      const primary = new THREE.Color(0xd97706); // slate-500 / amber-600
+      const accent  = new THREE.Color(0x1f2937); // slate-700 / slate-800
 
       // Group to rotate
       const group = new THREE.Group();
       scene.add(group);
 
       // Build a torus-knot, then sample points to create a Points cloud
-      const baseGeom = new TorusKnotGeometry(4.2, 0.9, 900, 80, 2, 3); // (radius, tube, tubularSegments, radialSegments, p, q)
-      // Convert to scattered points along surface for a lighter, airy look
+      const baseGeom = new TorusKnotGeometry(4.2, 0.9, 900, 80, 2, 3);
+
       const positions: number[] = [];
       const colors: number[] = [];
 
@@ -80,14 +87,13 @@ export function HeroSection() {
       const pos = baseGeom.getAttribute("position");
       const vertexCount = pos.count;
 
-      // Sample fewer points than the geometry has to keep it performant
       const sampleCount = 9000;
       for (let i = 0; i < sampleCount; i++) {
         const idx = Math.floor(Math.random() * vertexCount);
-        positions.push(pos.getX(idx), pos.getY(idx), pos.getZ(idx));
+        const x = pos.getX(idx), y = pos.getY(idx), z = pos.getZ(idx);
+        positions.push(x, y, z);
 
-        // Color blend based on distance from center -> subtle gradient
-        const d = new THREE.Vector3(pos.getX(idx), pos.getY(idx), pos.getZ(idx)).length();
+        const d = new THREE.Vector3(x, y, z).length();
         tmpColor.copy(primary).lerp(accent, THREE.MathUtils.clamp((d - 3.5) / 4.5, 0, 1));
         colors.push(tmpColor.r, tmpColor.g, tmpColor.b);
       }
@@ -102,25 +108,27 @@ export function HeroSection() {
         transparent: true,
         opacity: 0.9,
         depthWrite: false,
-        blending: THREE.AdditiveBlending,
+        blending:  THREE.AdditiveBlending,
       });
 
       const points = new THREE.Points(geo, mat);
       group.add(points);
 
-      // Add a few faint orbital rings (thin line loops)
+      // Faint orbital rings (even fainter in dark)
       const rings: THREE.Line[] = [];
       const ringMat = new THREE.LineBasicMaterial({
-        color: accent.clone().multiplyScalar(0.9),
+        color: accent.clone(),
         transparent: true,
         opacity: 0.25,
       });
       for (let i = 0; i < 3; i++) {
         const ringGeo = new THREE.RingGeometry(3.6 + i * 0.7, 3.62 + i * 0.7, 256);
-        // Convert Ring to LineLoop by sampling outer edge
         const ringPos = ringGeo.getAttribute("position");
         const lineGeo = new THREE.BufferGeometry();
-        lineGeo.setAttribute("position", new THREE.Float32BufferAttribute(ringPos.array as ArrayLike<number>, 3));
+        lineGeo.setAttribute(
+          "position",
+          new THREE.Float32BufferAttribute(ringPos.array as ArrayLike<number>, 3)
+        );
         const line = new THREE.LineLoop(lineGeo, ringMat);
         line.rotation.x = Math.random() * 0.8 - 0.4;
         line.rotation.y = Math.random() * 0.8 - 0.4;
@@ -129,7 +137,14 @@ export function HeroSection() {
         group.add(line);
       }
 
-      // Subtle float animation
+      // — Motion scaling: slower on small screens —
+      const calcMotionScale = () => {
+        const w = containerRef.current?.getBoundingClientRect().width ?? 1024;
+        // scale ~0.6 on very small phones → 1 on desktop
+        return Math.min(1, Math.max(0.6, w / 1024));
+      };
+      let motionScale = calcMotionScale();
+
       const clock = new THREE.Clock();
       let rafId = 0;
 
@@ -139,21 +154,21 @@ export function HeroSection() {
         renderer.setSize(width, height, false);
         camera.aspect = width / height;
         camera.updateProjectionMatrix();
+        motionScale = calcMotionScale();
       };
       window.addEventListener("resize", onResize);
 
       const animate = () => {
         const t = clock.getElapsedTime();
-        group.rotation.y += 0.0018;
-        group.rotation.x = Math.sin(t * 0.25) * 0.05;
 
-        // Gentle breathing for the points
-        const s = 1 + Math.sin(t * 0.6) * 0.02;
+        group.rotation.y += 0.0018 * motionScale;
+        group.rotation.x = Math.sin(t * 0.25 * motionScale) * 0.05;
+
+        const s = 1 + Math.sin(t * 0.6 * motionScale) * 0.02;
         group.scale.set(s, s, s);
 
-        // Rings drift a bit
         rings.forEach((r, i) => {
-          r.rotation.z += 0.0008 + i * 0.0003;
+          r.rotation.z += (0.0008 + i * 0.0003) * motionScale;
         });
 
         renderer.render(scene, camera);
@@ -196,6 +211,12 @@ export function HeroSection() {
         aria-hidden="true"
       />
 
+<div
+  className="pointer-events-none absolute inset-0 -z-10 bg-white/40 dark:bg-black/40"
+  aria-hidden="true"
+/>
+
+
       {/* Optional subtle gradient under canvas for depth */}
       <div className="pointer-events-none absolute inset-0 -z-20 bg-gradient-to-b from-background/0 via-background/40 to-background" />
 
@@ -208,16 +229,17 @@ export function HeroSection() {
       >
         <div className="absolute -inset-1 bg-amber-500/30 blur-2xl rounded-full z-[-1]" />
         <div className="w-32 h-32 sm:w-40 sm:h-40 rounded-full flex items-center justify-center shadow-2xl ring-2 ring-amber-500/30">
-          <img className="rounded-full" src="/images/avatar.png" alt="avatar" />
+          <img className="rounded-full object-cover bg-opacity-0" src="/images/real.png" alt="avatar" />
         </div>
       </motion.div>
+
 
       {/* Name */}
       <motion.h1
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3, duration: 0.6 }}
-        className="text-[5vw] lg:text-[4vw] tracking-wide font-playfair-display-sc text-amber-600 dark:text-amber-400"
+        className="tracking-wide font-playfair-display-sc text-amber-600 dark:text-amber-500 text-[clamp(2.5rem,12vw,4.5rem)]"
       >
         Pranitha Gaddam
       </motion.h1>
@@ -228,14 +250,14 @@ export function HeroSection() {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.6, duration: 0.6 }}
       >
-        <h2 className="text-xl sm:text-2xl lg:text-3xl text-amber-600 dark:text-amber-400 font-medium">
+        <h2 className="text-xl sm:text-2xl lg:text-3xl text-amber-600 dark:text-amber-500 font-medium">
           {text}
           {isTyping && <span className="animate-pulse">|</span>}
         </h2>
       </motion.div>
 
       {/* Description */}
-      <motion.p
+      {/* <motion.p
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.9, duration: 0.6 }}
@@ -244,29 +266,27 @@ export function HeroSection() {
         Passionate about exploring new technologies and tackling complex problems. My
         primary interests lie in software engineering and I&apos;m currently expanding my
         knowledge in AI/ML.
-      </motion.p>
+      </motion.p> */}
 
       {/* CTAs */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.2, duration: 0.6 }}
-        className="flex flex-col sm:flex-row gap-4"
+        className="flex flex-row gap-4"
       >
         <Button
-          size="lg"
-          className="bg-amber-500 hover:bg-amber-600 dark:bg-amber-600 dark:hover:bg-amber-700 text-white px-8"
+          className="bg-amber-500 hover:bg-amber-600 dark:bg-amber-600 dark:hover:bg-amber-700 text-white md:px-8 px-4 md:text-base text-sm"
         >
           <Download className="w-4 h-4 mr-2" />
           Download Resume
         </Button>
         <Button
           variant="outline"
-          size="lg"
           onClick={() =>
             document.querySelector("#projects")?.scrollIntoView({ behavior: "smooth" })
           }
-          className="border-amber-500 text-amber-600 hover:bg-amber-50 dark:border-amber-400 dark:text-amber-400 dark:hover:bg-amber-900/20 px-8"
+          className="border-amber-500 text-amber-600 hover:bg-amber-50 dark:border-amber-400 dark:text-amber-400 dark:hover:bg-amber-900/20 md:px-8 px-4 md:text-base text-sm"
         >
           View Projects
         </Button>
@@ -288,7 +308,7 @@ export function HeroSection() {
             whileHover={{ scale: 1.2, y: -5 }}
             whileTap={{ scale: 0.9 }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
-            className="p-3 rounded-full bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:text-amber-600 dark:hover:text-amber-400"
+            className="p-3 rounded-full bg-white dark:bg-gray-8 00 shadow-lg hover:shadow-xl border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 dark:bg-black hover:text-amber-600 dark:hover:text-amber-400"
             title={link.label}
           >
             <link.icon className="w-5 h-5" />

@@ -16,12 +16,13 @@ const experienceData = [
     type: "Internship",
     //description: "Led development of microservices architecture for client management system, improving system performance by 40%.",
     achievements: [
-        'Collaborated with a team to develop an account panel that displays customer information, enhancing internal workflows and supporting employee decision-making.',
-        'Built and styled user interface components using Angular and the company’s design system to ensure a consistent and user-friendly experience.',
-        'Integrated backend APIs with the frontend for improved access to real-time data and transformed raw data into actionable utilization ratings.',
-        'Maintained quality standards through unit testing, ensuring product readiness for production deployment.'
+        'Designed and launched a new platform UI feature using Angular and the company’s design system, improving usability and operational efficiency for 35,000+ daily users at a Fortune 300 enterprise. Contributed to a projected $250K operational savings over five years.',
+        'Integrated RESTful backend APIs to deliver real-time customer data and transformed raw inputs into actionable utilization ratings.',
+        'Optimized backend microservices with Spring Boot and Quarkus by streamlining data handling and improving query performance in MongoDB/Elasticsearch.',
+        'Ensured production readiness through comprehensive unit testing and implemented Canary deployments in Kubernetes CI/CD pipelines on Microsoft Azure.',
+        'Collaborated in Agile/Scrum workflows, supporting smooth deployments and maintaining high code quality standards.',
     ],
-    technologies: ["Angular", "Spring", "Git", "Microsoft Azure", "Docker", "Jest"]
+    technologies: ["TypeScript", "Angular", "Spring", "Git", "Microsoft Azure", "CI/CD"]
   },
 ];
 
