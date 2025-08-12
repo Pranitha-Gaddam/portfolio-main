@@ -19,11 +19,11 @@ const playfair = Playfair_Display({
   variable: '--font-playfair',
 });
 
-  export const playFairDisplaySC = Playfair_Display_SC({
+const playFairDisplaySC = Playfair_Display_SC({
     subsets: ["latin"],
     weight: ["400", "700"],
     variable: '--font-playfair-display-sc',
-  });
+});
   
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
