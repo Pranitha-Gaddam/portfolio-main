@@ -64,7 +64,7 @@ export function ContactSection() {
 
   const socialLinks = [
     { icon: Github, href: 'https://github.com/Pranitha-Gaddam', label: 'GitHub' },
-    { icon: Linkedin, href: 'www.linkedin.com/in/pranitha-gaddam', label: 'LinkedIn' },
+    { icon: Linkedin, href: 'https://linkedin.com/in/pranitha-gaddam', label: 'LinkedIn' },
   ];
 
   return (

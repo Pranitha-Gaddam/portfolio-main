@@ -277,10 +277,13 @@ export function HeroSection() {
         className="flex flex-row gap-4"
       >
         <Button
+        asChild
           className="bg-amber-500 hover:bg-amber-600 dark:bg-amber-600 dark:hover:bg-amber-700 text-white md:px-8 px-4 md:text-base text-sm"
         >
+            <a href="/Pranitha_Gaddam_Resume.pdf" download='Pranitha_Gaddam_Resume.pdf'>
           <Download className="w-4 h-4 mr-2" />
           Download Resume
+          </a>
         </Button>
         <Button
           variant="outline"
