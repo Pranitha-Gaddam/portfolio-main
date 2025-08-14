@@ -1,6 +1,6 @@
 # Portfolio Website
 
-A modern, responsive, and interactive portfolio website built with **Next.js** to showcase projects, experience, and skills. Designed for high performance, accessibility, and visual appeal, this site integrates smooth animations, an interactive Three.js particle background, and a contact form to connect with visitors.
+A modern, responsive, and interactive portfolio website built with **Next.js** to showcase projects, experience, and skills and designed for high performance, accessibility, and visual appeal.
 
 [🌐 View Live on Vercel](https://portfolio-main-1s9o6gsfo-pranitha-gaddams-projects.vercel.app)
 
