@@ -40,11 +40,20 @@ const certificationsData = [
   },
   {
     id: 4,
-    title: "Certified in Cybersecurity",
+    title: 'Certified in Cybersecurity (CC)',
+    issuer: 'ISC2',
+    date: 'Oct 2024',
+    verifyUrl: 'https://www.credly.com/badges/9e9b6fbd-bb9c-45a5-acf1-a0e165ed1ccb/public_url',
+    description: 'Achieved ISC2 Certified in Cybersecurity (CC) certification, demonstrating foundational knowledge in cybersecurity principles, practices, and technologies.',
+    skills: ['Cybersecurity Fundamentals', 'Risk Management', 'Security Operations', 'Incident Response'],
+  },
+  {
+    id: 5,
+    title: "CSE Undergraduate NSA Cybersecurity Certificate",
     issuer: "University of North Texas",
     date: "Dec 2025",
     credentialId: "In Progress",
-    description: "Currently pursuing the Certified in Cybersecurity program at the University of North Texas, focusing on core areas such as network security, threat mitigation, risk management, identity and access control, and security operations.",
+    description: "Currently pursuing the Cybersecurity Certificate program at the University of North Texas, focusing on core areas such as network security, threat mitigation, risk management, identity and access control, and security operations.",
     skills: ["Network Security", "Threat Detection and Mitigation", "Risk Management", "Incident Response"]
   },
 ];

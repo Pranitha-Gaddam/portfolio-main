@@ -3,6 +3,7 @@ import { Inter, Playfair_Display, Bad_Script, Playfair_Display_SC } from 'next/f
 import { ThemeProvider } from '@/providers/theme-provider';
 import { Navigation } from '@/components/navigation';
 import { Footer } from '@/components/footer';
+import { Analytics } from "@vercel/analytics/next"
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -38,6 +39,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           >
             <Navigation />
             <main className="min-h-screen">{children}</main>
+            <Analytics />
             <Footer />
           </ThemeProvider>
         </body>

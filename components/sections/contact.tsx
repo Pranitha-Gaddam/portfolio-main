@@ -23,22 +23,35 @@ export function ContactSection() {
     message: ''
   });
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [status, setStatus] = useState<"idle"|"ok"|"error">("idle");
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    // Reset form
-    setFormData({ name: '', email: '', subject: '', message: '' });
-    setIsSubmitting(false);
-    
-    // In a real app, you'd send this to your backend
-    console.log('Form submitted:', formData);
-  };
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+        setStatus("idle");
+        try {
+          const res = await fetch("/api/contact", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ ...formData, website: "" }),
+          });
+      
+          const body = await res.json().catch(() => ({}));
+      
+          if (!res.ok) throw new Error(body?.error || `Request failed (${res.status})`);
+      
+          console.log("Resend response:", body); // expect { ok: true, id: "email_..." }
+          setFormData({ name: "", email: "", subject: "", message: "" });
+          setStatus("ok");
+        } catch (err: any) {
+          console.error(err);
+          setStatus("error");
+        } finally {
+          setIsSubmitting(false);
+        }
+      };
+      
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -99,6 +112,13 @@ export function ContactSection() {
                   Send Me a Message
                 </h3>
                 <form onSubmit={handleSubmit} className="space-y-6">
+                    <input
+                        type="text"
+                        name="website"
+                        className="hidden"
+                        tabIndex={-1}
+                        autoComplete="off"
+                    />
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="name">Name</Label>
@@ -106,7 +126,7 @@ export function ContactSection() {
                         id="name"
                         name="name"
                         type="text"
-                        placeholder="Pranitha Gaddam"
+                        placeholder="Your Name"
                         value={formData.name}
                         onChange={handleInputChange}
                         required
@@ -170,6 +190,16 @@ export function ContactSection() {
                       </>
                     )}
                   </Button>
+                    {status === "ok" && (
+                        <p className="mt-3 text-sm text-green-600" aria-live="polite">
+                        Message sent! I’ll get back to you soon.
+                        </p>
+                    )}
+                    {status === "error" && (
+                        <p className="mt-3 text-sm text-red-600" aria-live="polite">
+                        Something went wrong. Please try again or email me directly.
+                        </p>
+                    )}
                 </form>
               </CardContent>
             </Card>
