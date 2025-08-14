@@ -20,6 +20,13 @@ const playfair = Playfair_Display({
   variable: '--font-playfair',
 });
 
+export const metadata = {
+    title: "Pranitha Gaddam Portfolio",
+    icons: {
+        icon: "/images/icon.png",
+      },
+  };
+
 const playFairDisplaySC = Playfair_Display_SC({
     subsets: ["latin"],
     weight: ["400", "700"],
