@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+Disallow: /api/
+Disallow: /admin/
+Disallow: /private/
+Disallow: /drafts/
+Disallow: /404
+Disallow: /500
