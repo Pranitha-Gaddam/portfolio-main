@@ -43,7 +43,7 @@ export function EducationSection() {
           </h2>
           <div className="w-20 h-1 bg-amber-500 mx-auto mb-4" />
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            My academic journey and achievements in computer science and software engineering.
+            My academic journey in computer science.
           </p>
         </motion.div>
 
