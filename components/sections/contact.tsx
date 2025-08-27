@@ -95,7 +95,7 @@ export function ContactSection() {
           </h2>
           <div className="w-20 h-1 bg-amber-500 mx-auto mb-4" />
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Let's discuss opportunities, collaborations, or just have a chat about technology and innovation.
+            Let's discuss ideas, projects, potential opportunities, or just say hi!
           </p>
         </motion.div>
 
