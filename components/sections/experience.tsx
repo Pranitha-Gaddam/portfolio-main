@@ -47,7 +47,7 @@ export function ExperienceSection() {
           </h2>
           <div className="w-20 h-1 bg-amber-500 mx-auto mb-4" />
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            My professional journey through internships and projects that have shaped my development skills and expertise.
+            My professional journey through internships that have shaped my development skills and expertise.
           </p>
         </motion.div>
 
