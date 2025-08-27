@@ -42,9 +42,9 @@ export function EducationSection() {
             Education
           </h2>
           <div className="w-20 h-1 bg-amber-500 mx-auto mb-4" />
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+{/*           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             My academic journey in computer science.
-          </p>
+          </p> */}
         </motion.div>
 
         <div className="space-y-8">
