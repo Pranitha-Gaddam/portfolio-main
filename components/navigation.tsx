@@ -9,9 +9,9 @@ import { Button } from '@/components/ui/button';
 const navigationItems = [
   { name: 'Home', href: '#home' },
   { name: 'Education', href: '#education' },
+  { name: 'Experience', href: '#experience' },
   { name: 'Projects', href: '#projects' },
   { name: 'Certifications', href: '#certifications' },
-  { name: 'Experience', href: '#experience' },
   { name: 'Contact', href: '#contact' },
 ];
 
