@@ -10,9 +10,9 @@ export default function Home() {
     <div className="overflow-x-hidden">
       <HeroSection />
       <EducationSection />
+      <ExperienceSection />
       <ProjectsSection />
       <CertificationsSection />
-      <ExperienceSection />
       <ContactSection />
     </div>
   );
