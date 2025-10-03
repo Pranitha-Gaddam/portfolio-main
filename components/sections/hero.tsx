@@ -9,7 +9,7 @@ import * as THREE from 'three';
 export function HeroSection() {
   const [text, setText] = useState("");
   const [isTyping, setIsTyping] = useState(true);
-  const fullText = "Full-Stack Developer";
+  const fullText = "Hi! I’m Pranitha, a software engineer who loves exploring new tools and solving hard problems";
 
   // === Three.js canvas holder ===
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
