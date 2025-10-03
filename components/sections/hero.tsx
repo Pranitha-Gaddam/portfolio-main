@@ -249,9 +249,9 @@ export function HeroSection() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 0.6, duration: 0.6 }}
+        transition={{ delay: 0.3, duration: 0.4 }}
       >
-        <h2 className="text-xl sm:text-2xl lg:text-3xl text-amber-600 dark:text-amber-500 font-medium">
+        <h2 className="text-base sm:text-lg lg:text-xl text-amber-600 dark:text-amber-500 font-normal leading-snug">
           {text}
           {isTyping && <span className="animate-pulse">|</span>}
         </h2>
