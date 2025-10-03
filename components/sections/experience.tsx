@@ -14,16 +14,32 @@ const experienceData = [
     location: "Lowell, AR",
     duration: "May 2025 - July 2025",
     type: "Internship",
-    //description: "Led development of microservices architecture for client management system, improving system performance by 40%.",
     achievements: [
-        'Designed and launched a new platform UI feature using Angular and the company’s design system, improving usability and operational efficiency for 35,000+ daily users at a Fortune 300 enterprise. Contributed to a projected $250K operational savings over five years.',
-        'Integrated RESTful backend APIs to deliver real-time customer data and transformed raw inputs into actionable utilization ratings.',
-        'Optimized backend microservices with Spring Boot and Quarkus by streamlining data handling and improving query performance in MongoDB/Elasticsearch.',
-        'Ensured production readiness through comprehensive unit testing and implemented Canary deployments in Kubernetes CI/CD pipelines on Microsoft Azure.',
-        'Collaborated in Agile/Scrum workflows, supporting smooth deployments and maintaining high code quality standards.',
+      "Built Angular UI features used by 35,000+ daily users, driving ~$250K projected operational savings.",
+      "Optimized Spring Boot/Quarkus microservices and MongoDB/Elasticsearch queries; cached BigQuery-backed APIs with Redis to cut latency from ~10s to <200ms.",
+      "Implemented Kubernetes CI/CD on Azure with canary releases and automated test suites to harden production reliability.",
+      "Integrated RESTful APIs to deliver real-time data and generate actionable utilization ratings.",
+      "Collaborated in Agile/Scrum workflows to ship production features with high code quality."
     ],
-    technologies: ["TypeScript", "Angular", "Spring", "Git", "Microsoft Azure", "CI/CD"]
+    technologies: [
+      "TypeScript", "Angular", "Spring Boot", "Quarkus", "MongoDB", "Elasticsearch",
+      "Redis", "BigQuery", "Kubernetes", "Azure", "CI/CD", "Jest", "JUnit", "Cypress", "Git"
+    ]
   },
+  {
+    id: 2,
+    title: "Accessibility Research",
+    company: "Independent Research",
+    location: "Remote",
+    duration: "Aug 2024 - Dec 2024",
+    type: "Research",
+    achievements: [
+      "Benchmarked 50+ Unity accessibility plugins against WCAG 2.0, exposing gaps in flashing-light detection, FoV adjustment, and volume analysis.",
+      "Built a Unity plugin automating 14 accessibility checks, adding functionality missing in existing tools.",
+      "Automated compliance reporting, reducing manual QA validation effort by more than half."
+    ],
+    technologies: ["Unity", "C#", "WCAG 2.0", "AWS Polly", "OpenAI API"]
+  }
 ];
 
 export function ExperienceSection() {
