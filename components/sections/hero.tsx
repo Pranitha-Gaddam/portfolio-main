@@ -246,7 +246,7 @@ export function HeroSection() {
       </motion.h1>
 
       {/* Typing line */}
-      <motion.div
+      {/* <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.3, duration: 0.4 }}
@@ -255,7 +255,7 @@ export function HeroSection() {
           {text}
           {isTyping && <span className="animate-pulse">|</span>}
         </h2>
-      </motion.div>
+      </motion.div> */}
 
       {/* Description */}
       {/* <motion.p
