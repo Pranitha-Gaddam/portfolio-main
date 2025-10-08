@@ -61,10 +61,6 @@ export function ExperienceSection() {
           <h2 className="text-3xl sm:text-4xl font-playfair font-bold text-gray-900 dark:text-white mb-4">
             Professional Experience
           </h2>
-          <div className="w-20 h-1 bg-amber-500 mx-auto mb-4" />
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            My professional journey through internships that have shaped my development skills and expertise.
-          </p>
         </motion.div>
 
         <div className="relative">
