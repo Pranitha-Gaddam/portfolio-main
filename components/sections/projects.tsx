@@ -11,7 +11,7 @@ const projectsData = [
   {
     id: 1,
     title: "Multi-Modal Knowledge Assistant",
-    description: "An AI-powered knowledge assistant that merges text, media, and documents into a unified RAG-based retrieval system with customizable agentic workflows.",
+    description: "(Ongoing) An AI-powered knowledge assistant that merges text, media, and documents into a unified RAG-based retrieval system with customizable agentic workflows.",
     image: "images/multimodal.png",
     technologies: ["Python", "TypeScript", "Next.js", "LangChain", "FAISS"],
     featured: true
