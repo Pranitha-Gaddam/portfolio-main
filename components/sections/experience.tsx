@@ -23,7 +23,7 @@ const experienceData = [
     ],
     technologies: [
       "TypeScript", "Angular", "Spring Boot", "Quarkus", "MongoDB", "Elasticsearch",
-      "Redis", "BigQuery", "Kubernetes", "Azure", "CI/CD", "Jest", "JUnit", "Cypress", "Git"
+      "Redis", "BigQuery", "Kubernetes", "Azure", "CI/CD", "Jest", "JUnit", "Cypress", "Git", "RAG"
     ]
   },
   {
