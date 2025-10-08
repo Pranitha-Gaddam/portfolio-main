@@ -14,8 +14,6 @@ const projectsData = [
     description: "An AI-powered knowledge assistant that merges text, media, and documents into a unified RAG-based retrieval system with customizable agentic workflows.",
     image: "images/multimodal.png",
     technologies: ["Python", "TypeScript", "Next.js", "LangChain", "FAISS"],
-    githubUrl: "",
-    liveUrl: "",
     featured: true
   },
   {
@@ -162,10 +160,12 @@ export function ProjectsSection() {
                     asChild
                     className="flex-1 border-amber-200 dark:border-amber-800 hover:bg-amber-50 dark:hover:bg-amber-900/20"
                   >
+                    {project.githubUrl && (
                     <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
                       <Github className="w-4 h-4 mr-2" />
                       Code
                     </a>
+                    )}
                   </Button>
                   <Button
                     size="sm"
