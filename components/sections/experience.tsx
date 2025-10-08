@@ -9,7 +9,7 @@ import { Badge } from '@/components/ui/badge';
 const experienceData = [
   {
     id: 1,
-    title: "Application Development Intern",
+    title: "Software Engineering Intern",
     company: "J.B. Hunt Transport Services, Inc.",
     location: "Lowell, AR",
     duration: "May 2025 - July 2025",
