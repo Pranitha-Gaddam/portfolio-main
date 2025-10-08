@@ -15,11 +15,11 @@ const experienceData = [
     duration: "May 2025 - July 2025",
     type: "Internship",
     achievements: [
-      "Built Angular UI features used by 35,000+ daily users, driving ~$250K projected operational savings.",
-      "Optimized Spring Boot/Quarkus microservices and MongoDB/Elasticsearch queries; cached BigQuery-backed APIs with Redis to cut latency from ~10s to <200ms.",
-      "Implemented Kubernetes CI/CD on Azure with canary releases and automated test suites to harden production reliability.",
-      "Integrated RESTful APIs to deliver real-time data and generate actionable utilization ratings.",
-      "Collaborated in Agile/Scrum workflows to ship production features with high code quality."
+      'Developed platform UI features with Angular for a Fortune 300 enterprise with 35,000+ daily users.',
+      'Refactored SpringBoot microservices and tuned MongoDB/Elasticsearch queries to improve latency for heavy traffic.',
+      'Implemented Redis caching for APIs fetching from BigQuery, cutting response times by 90%+.',
+      'Built VS Code AI assistant to offer design-system snippets with RAG, reducing developer lookup time by nearly half.',
+      'Strengthened deployment reliability with Kubernetes CI/CD on Azure using canary releases and automated testing.'
     ],
     technologies: [
       "TypeScript", "Angular", "Spring Boot", "Quarkus", "MongoDB", "Elasticsearch",
