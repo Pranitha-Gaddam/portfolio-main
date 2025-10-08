@@ -10,8 +10,18 @@ import { Badge } from '@/components/ui/badge';
 const projectsData = [
   {
     id: 1,
+    title: "Multi-Modal Knowledge Assistant",
+    description: "An AI-powered knowledge assistant that merges text, media, and documents into a unified RAG-based retrieval system with customizable agentic workflows.",
+    image: "images/multimodal.png",
+    technologies: ["Python", "TypeScript", "Next.js", "LangChain", "FAISS"],
+    githubUrl: "",
+    liveUrl: "",
+    featured: true
+  },
+  {
+    id: 2,
     title: "Indoor Navigation System",
-    description: "An Indoor Navigation System for UNT's Engineering Building, with multi-level support and route optimization.",
+    description: "An Indoor Navigation System for UNT's Engineering Building, with multi-floor support and route optimization.",
     image: "images/indoornav.png",
     technologies: ["JavaScript", "Bootstrap", "MySQL", "QJIS", "JOSM"],
     githubUrl: "https://github.com/Pranitha-Gaddam/UNT-Discovery-Park-Indoor-Navigation",
@@ -19,7 +29,7 @@ const projectsData = [
     featured: true
   },
   {
-    id: 2,
+    id: 3,
     title: "Accessibility Plugin for Unity",
     description: "A Unity plugin that enhances game accessibility by guiding developers in detecting and resolving key accessibility issues.",
     image: "images/unity.png",
@@ -29,7 +39,7 @@ const projectsData = [
     featured: true
   },
   {
-    id: 3,
+    id: 4,
     title: "Pomodoro Study Timer",
     description: "A deep-focus Pomodoro timer with customizable timer, backgrounds, audio, and additional tools for productivity.",
     image: "images/pomodoro.png",
@@ -39,7 +49,7 @@ const projectsData = [
     featured: true
   },
   {
-    id: 4,
+    id: 5,
     title: "Automated File Downloader",
     description: "A python script using the Google Cloud Platform (GCP) to automatically download files from a folder in Google Drive to a local folder on your device.",
     image: "images/script.png",
@@ -49,7 +59,7 @@ const projectsData = [
     featured: false
   },
   {
-    id: 5,
+    id: 6,
     title: "Restaurant Website",
     description: "A sample resaurant website for an indian restaurant with food menu display and the ability to let users make reservations online.",
     image: "images/indianres.png",
@@ -59,7 +69,7 @@ const projectsData = [
     featured: false
   },
   {
-  id: 6,
+  id: 7,
     title: "Job Scheduler",
     description: "A Simulated Annealing agent created to maximize work scheduling.",
     image: "images/jobscheduler.png",
