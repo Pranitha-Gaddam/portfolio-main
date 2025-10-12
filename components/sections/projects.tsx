@@ -21,7 +21,7 @@ const projectsData = [
     title: "Indoor Navigation System",
     description: "An Indoor Navigation System for UNT's Engineering Building, with multi-floor support and route optimization.",
     image: "images/indoornav.png",
-    technologies: ["JavaScript", "Bootstrap", "MySQL", "QJIS", "JOSM"],
+    technologies: ["JavaScript", "Bootstrap", "QJIS", "JOSM"],
     githubUrl: "https://github.com/Pranitha-Gaddam/UNT-Discovery-Park-Indoor-Navigation",
     liveUrl: "https://pranitha-gaddam.github.io/UNT-Discovery-Park-Indoor-Navigation/",
     featured: true
