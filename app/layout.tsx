@@ -3,7 +3,8 @@ import { Inter, Playfair_Display, Bad_Script, Playfair_Display_SC } from 'next/f
 import { ThemeProvider } from '@/providers/theme-provider';
 import { Navigation } from '@/components/navigation';
 import { Footer } from '@/components/footer';
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/next";
+import { GoogleAnalytics } from '@next/third-parties/google';
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -50,14 +51,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Footer />
           </ThemeProvider>
         </body>
-              <script async src="https://www.googletagmanager.com/gtag/js?id=G-4S0Q4FYQ8E"></script>
-              <script>
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-              
-                gtag('config', 'G-4S0Q4FYQ8E');
-              </script>
+        <GoogleAnalytics gaId="G-4S0Q4FYQ8E" />
       </html>
     );
   }
