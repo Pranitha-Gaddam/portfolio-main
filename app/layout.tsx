@@ -37,6 +37,15 @@ const playFairDisplaySC = Playfair_Display_SC({
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
       <html lang="en" suppressHydrationWarning>
+        <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4S0Q4FYQ8E"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4S0Q4FYQ8E');
+</script>
         <body className={`${inter.variable} ${playfair.variable} ${playFairDisplaySC.variable} ${badScript.variable} font-sans antialiased`}>
           <ThemeProvider
             attribute="class"
