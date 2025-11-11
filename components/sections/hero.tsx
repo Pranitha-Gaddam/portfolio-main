@@ -161,17 +161,20 @@ export function HeroSection() {
 
       const animate = () => {
         const t = clock.getElapsedTime();
-
-        group.rotation.y += 0.0018 * motionScale;
+        const speedY = 0.108; // (0.0018 * 60)
+        const ringBaseSpeed = 0.048; // (0.0008 * 60)
+        const ringIncSpeed = 0.018; // (0.0003 * 60)
+  
+        group.rotation.y = t * speedY * motionScale; // Use '=' not '+='
         group.rotation.x = Math.sin(t * 0.25 * motionScale) * 0.05;
-
+  
         const s = 1 + Math.sin(t * 0.6 * motionScale) * 0.02;
         group.scale.set(s, s, s);
-
+  
         rings.forEach((r, i) => {
-          r.rotation.z += (0.0008 + i * 0.0003) * motionScale;
+          r.rotation.z = t * (ringBaseSpeed + i * ringIncSpeed) * motionScale; // Use '=' not '+='
         });
-
+  
         renderer.render(scene, camera);
         rafId = requestAnimationFrame(animate);
       };
