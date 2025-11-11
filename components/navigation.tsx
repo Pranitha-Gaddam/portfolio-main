@@ -46,12 +46,15 @@ export function Navigation() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToSection = (href: string) => {
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault(); 
     const element = document.querySelector(href);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
-    setIsOpen(false);
+    setTimeout(() => {
+      setIsOpen(false);
+    }, 300); 
   };
 
   if (!mounted) return null;
@@ -130,9 +133,10 @@ export function Navigation() {
             >
               <div className="px-2 pt-2 pb-3 space-y-1">
                 {navigationItems.map((item) => (
-                  <button
+                  <a
                     key={item.name}
-                    onClick={() => scrollToSection(item.href)}
+                    href={item.href} // Add the href for semantics and fallback
+                    onClick={(e) => scrollToSection(e, item.href)} // Pass the event 'e'
                     className={`block px-3 py-2 text-base font-medium w-full text-left transition-colors ${
                       activeSection === item.href.slice(1)
                         ? 'text-amber-500 dark:text-amber-400 bg-amber-50 dark:bg-amber-900/20'
@@ -140,7 +144,7 @@ export function Navigation() {
                     }`}
                   >
                     {item.name}
-                  </button>
+                  </a>
                 ))}
               </div>
             </motion.div>
