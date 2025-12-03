@@ -15,30 +15,28 @@ const experienceData = [
     duration: "May 2025 - July 2025",
     type: "Internship",
     achievements: [
-      'Developed platform UI features with Angular for a Fortune 300 enterprise with 35,000+ daily users.',
-      'Refactored SpringBoot microservices and tuned MongoDB/Elasticsearch queries to improve latency for heavy traffic.',
-      'Implemented Redis caching for APIs fetching from BigQuery, cutting response times by 90%+.',
-      'Built VS Code AI assistant to offer design-system snippets with RAG, reducing developer lookup time by nearly half.',
-      'Strengthened deployment reliability with Kubernetes CI/CD on Azure using canary releases and automated testing.'
+      'Built and optimized platform features for 35,000+ daily users',
+      'Contributed to a projected $250K operational savings over five years.'
+      'Worked across the full stack: Angular UI, microservices, database tuning, testing and deployment on Azure CI/CD',
+      'Built and integrated AI tools into internal developer workflows'
     ],
     technologies: [
-      "TypeScript", "Angular", "Spring Boot", "Quarkus", "MongoDB", "Elasticsearch",
-      "Redis", "BigQuery", "Kubernetes", "Azure", "CI/CD", "Jest", "JUnit", "Cypress", "Git", "RAG"
+      "TypeScript", "Angular", "Java", "Spring Boot", "MongoDB", "Elasticsearch",
+      "Redis", "BigQuery", "Kubernetes", "Azure", "Git", "RAG"
     ]
   },
   {
     id: 2,
     title: "Accessibility Research",
-    company: "Independent Research",
-    location: "Remote",
+    company: "University of North Texas",
+    location: "Denton, TX",
     duration: "Aug 2024 - Dec 2024",
     type: "Research",
     achievements: [
-      "Benchmarked 50+ Unity accessibility plugins against WCAG 2.0, exposing gaps in flashing-light detection, FoV adjustment, and volume analysis.",
-      "Built a Unity plugin automating 14 accessibility checks, adding functionality missing in existing tools.",
-      "Automated compliance reporting, reducing manual QA validation effort by more than half."
+      "Analyzed 50+ Unity accessibility plugins against WCAG 2.0 to uncover major compliance gaps.",
+      "Built a Unity plugin with 14 automated accessibility checks and automated compliance reporting."
     ],
-    technologies: ["Unity", "C#", "WCAG 2.0", "AWS Polly", "OpenAI API"]
+    technologies: ["Unity", "C#", '.NET', "AWS Polly", "OpenAI API"]
   }
 ];
 
