@@ -13,7 +13,7 @@ const projectsData = [
     title: "Multi-Modal Knowledge Assistant",
     description: "(Ongoing) An AI-powered knowledge assistant that merges text, media, and documents into a unified RAG-based retrieval system with customizable agentic workflows.",
     image: "images/multimodal.png",
-    technologies: ["Python", "TypeScript", "Next.js", "LangChain", "FAISS"],
+    technologies: ["Python", "TypeScript", "Next.js", "LangChain", "FAISS", "RAG"],
     featured: true
   },
   {
@@ -48,6 +48,16 @@ const projectsData = [
   },
   {
     id: 5,
+    title: "RAG Semantic Search - Base Implementation",
+    description: "A simple Retrieval-Augmented Generation (RAG) based semantic document search, which lets you search by meaning, not just keywords. Perfect for learning how RAG systems work!",
+    image: "images/script.png",
+    technologies: ["Python", "FastAPI", "RAG", "Artificial Intelligence (AI)"],
+    githubUrl: "https://github.com/Pranitha-Gaddam/simple-RAG-system",
+    liveUrl: "https://web-production-ffab.up.railway.app/ui/",
+    featured: false
+  },
+  {
+    id: 5,
     title: "Automated File Downloader",
     description: "A python script using the Google Cloud Platform (GCP) to automatically download files from a folder in Google Drive to a local folder on your device.",
     image: "images/script.png",
@@ -57,17 +67,7 @@ const projectsData = [
     featured: false
   },
   {
-    id: 6,
-    title: "Restaurant Website",
-    description: "A sample resaurant website for an indian restaurant with food menu display and the ability to let users make reservations online.",
-    image: "images/indianres.png",
-    technologies: ["React", "Spring", "PostgreSQL", "Tailwind CSS", "Heroku", "Vercel"],
-    githubUrl: "https://github.com/Pranitha-Gaddam/Restaurant-Website",
-    liveUrl: "https://restaurant-website-navy-three.vercel.app/",
-    featured: false
-  },
-  {
-  id: 7,
+  id: 6,
     title: "Job Scheduler",
     description: "A Simulated Annealing agent created to maximize work scheduling.",
     image: "images/jobscheduler.png",
