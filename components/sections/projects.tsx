@@ -50,7 +50,7 @@ const projectsData = [
     id: 5,
     title: "RAG Semantic Search - Base Implementation",
     description: "A simple Retrieval-Augmented Generation (RAG) based semantic document search, which lets you search by meaning, not just keywords. Perfect for learning how RAG systems work!",
-    image: "images/script.png",
+    image: "images/rag.png",
     technologies: ["Python", "FastAPI", "RAG", "Artificial Intelligence (AI)"],
     githubUrl: "https://github.com/Pranitha-Gaddam/simple-RAG-system",
     liveUrl: "https://web-production-ffab.up.railway.app/ui/",
