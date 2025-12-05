@@ -1,5 +1,5 @@
 import './globals.css';
-import { Inter, Playfair_Display, Bad_Script, Playfair_Display_SC, Fraunces } from 'next/font/google';
+import { Inter, Playfair_Display, Bad_Script, Playfair_Display_SC } from 'next/font/google';
 import { ThemeProvider } from '@/providers/theme-provider';
 import { Navigation } from '@/components/navigation';
 import { Footer } from '@/components/footer';
@@ -21,11 +21,6 @@ const playfair = Playfair_Display({
   subsets: ['latin'],
   variable: '--font-playfair',
 });
-const fraunces = Fraunces({ 
-  subsets: ["latin"],
-  variable: "--font-fraunces",
-  // Fraunces is a variable font, so we get all weights automatically!
-});
 
 export const metadata = {
     title: "Pranitha Gaddam Portfolio",
@@ -44,7 +39,7 @@ const playFairDisplaySC = Playfair_Display_SC({
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
       <html lang="en" suppressHydrationWarning>
-        <body className={`${inter.variable} ${playfair.variable} ${playFairDisplaySC.variable} ${fraunces.variable} ${badScript.variable} font-sans antialiased`}>
+        <body className={`${inter.variable} ${playfair.variable} ${playFairDisplaySC.variable} ${badScript.variable} font-sans antialiased`}>
           <ThemeProvider
             attribute="class"
             defaultTheme="light"

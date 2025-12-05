@@ -11,8 +11,7 @@ export function HeroSection() {
   const fullText = "Hi! I'm Pranitha.";
   
   useEffect(() => {
-    // TIMING UPDATE: Reduced from 3500ms to 2600ms (2.6s)
-    // This ensures the typing starts exactly as the slide reveals the content.
+    // 1. FAST TIMING: Starts at 2.6s to match slide exit
     const startDelay = 2600; 
     let typeTimer: NodeJS.Timeout;
 
@@ -65,7 +64,6 @@ export function HeroSection() {
       const camera = new THREE.PerspectiveCamera(55, bounds.width / bounds.height, 0.1, 100);
       camera.position.set(0, 0.6, 12);
 
-      // --- COLOR LOGIC ---
       const getThemeColors = () => {
         const isDark = document.documentElement.classList.contains("dark");
         if (isDark) {
@@ -234,7 +232,7 @@ export function HeroSection() {
       className="relative min-h-[100dvh] flex flex-col justify-center px-4 pt-24 pb-12 overflow-hidden"
     >
       <canvas ref={canvasRef} className="absolute inset-0 -z-10 w-full h-full" aria-hidden="true" />
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-white/70 dark:bg-black/30" aria-hidden="true" />
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-white/70 dark:bg-black/40" aria-hidden="true" />
       <div className="pointer-events-none absolute inset-0 -z-20 bg-gradient-to-b from-background/0 via-background/40 to-background" />
 
       <div className="container mx-auto z-10 flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-16 max-w-6xl">
@@ -265,10 +263,15 @@ export function HeroSection() {
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            // TIMING UPDATE: Reduced delay from 3.8 to 2.9 (Synced with text)
+            // 2. FAST TIMING: Reduced from 3.8 to 2.9 (Synced with text)
             transition={{ delay: 2.9, duration: 0.6 }}
             className="w-full max-w-2xl mx-auto lg:mx-0"
           >
+            {/* 3. RESPONSIVE TEXT FIX:
+               - text-sm (mobile) -> text-xl (desktop)
+               - leading-relaxed (mobile) -> leading-loose (desktop)
+               - h-3 (mobile spacer) -> h-6 (desktop spacer)
+            */}
             <div className="pl-4 sm:pl-5 border-l-4 border-amber-500/40 dark:border-amber-500/60">
               <p className="text-sm sm:text-xl leading-loose text-slate-800 dark:text-slate-100 font-medium tracking-wide">
                 I&apos;m a soon-to-be Computer Science grad (10 days to go!). My primary interests are in{" "}
@@ -295,15 +298,18 @@ export function HeroSection() {
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              // TIMING UPDATE: Reduced delay from 4.0 to 3.1
+              // FAST TIMING: 3.1
               transition={{ delay: 3.1, duration: 0.6 }}
               className="flex flex-wrap justify-center gap-3 sm:gap-4"
             >
               <Button asChild className="bg-amber-500 group hover:bg-amber-600 dark:bg-amber-600 dark:hover:bg-amber-700 text-white px-6 shadow-md h-10 text-sm sm:text-base">
-                <a href="https://drive.google.com/file/d/138G18CQ4so7Hrbc3phSTi9pR6tt_uTR1/view?usp=sharing" target="_blank" 
-                  rel="noopener noreferrer">
-                    <span className="ml-2">Resume</span>
-                    <ArrowUpRight className="w-4 h-4 ml-1 mr-1 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                <a 
+                  href="https://drive.google.com/file/d/138G18CQ4so7Hrbc3phSTi9pR6tt_uTR1/view?usp=sharing" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                >
+                  <span className="mr-1">Resume</span>
+                  <ArrowUpRight className="w-4 h-4 ml-1 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </a>
               </Button>
               <Button
@@ -318,7 +324,7 @@ export function HeroSection() {
             <motion.div 
                initial={{ opacity: 0 }}
                animate={{ opacity: 1 }}
-               // TIMING UPDATE: Reduced delay from 4.1 to 3.2
+               // FAST TIMING: 3.2
                transition={{ delay: 3.2 }}
                className="hidden sm:block h-8 w-[1px] bg-slate-400 dark:bg-slate-600" 
             />
@@ -326,7 +332,7 @@ export function HeroSection() {
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
-              // TIMING UPDATE: Reduced delay from 4.2 to 3.3
+              // FAST TIMING: 3.3
               transition={{ delay: 3.3, duration: 0.6 }}
               className="flex gap-4"
             >
@@ -352,7 +358,7 @@ export function HeroSection() {
         <motion.div
           initial={{ scale: 0, rotate: 0 }}
           animate={{ scale: 1, rotate: 0 }}
-          // TIMING UPDATE: Reduced delay from 3.5 to 2.6 (Starts with typewriter)
+          // FAST TIMING: 2.6 (Starts with typewriter)
           transition={{ delay: 2.6, duration: 0.8, ease: "easeOut" }}
           className="relative flex-shrink-0 flex items-center justify-center order-1 lg:order-2"
         >
@@ -366,11 +372,12 @@ export function HeroSection() {
         </motion.div>
 
       </div>
-
+      
+      {/* Scroll Indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        // TIMING UPDATE: Reduced delay from 4.5 to 3.6
+        // FAST TIMING: 3.6
         transition={{ delay: 3.6, duration: 0.6 }}
         className="absolute bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2 hidden sm:block"
       >
