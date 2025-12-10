@@ -23,7 +23,7 @@
     "eslint-config-next": "13.5.1",
     "framer-motion": "^12.23.12",
     "lucide-react": "^0.446.0",
-    "next": "^15.4.5",
+    "next": "15.4.8",
     "next-themes": "^0.3.0",
     "postcss": "8.4.30",
     "react": "18.2.0",
