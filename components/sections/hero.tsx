@@ -288,7 +288,7 @@ export function HeroSection() {
               
               <p className="text-sm sm:text-xl leading-loose text-slate-800 dark:text-slate-100 font-medium tracking-wide">
                 My passion for computer science comes from my love for{" "}
-                <span className="font-medium text-slate-900 dark:text-white">building things</span> and solving complex problems. In my free time, I like to play pickleball or video games, cook (and eat), and travel.
+                <span className="font-medium text-slate-900 dark:text-white">building things</span> and solving complex problems. In my free time, I like to play pickleball or video games, cook (and eat!), and travel.
               </p>
             </div>
           </motion.div>
