@@ -362,12 +362,13 @@ export function HeroSection() {
           transition={{ delay: 2.6, duration: 0.8, ease: "easeOut" }}
           className="relative flex-shrink-0 flex items-center justify-center order-1 lg:order-2"
         >
-          <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-[28rem] md:h-[28rem] flex items-center justify-center">
+          <div className="relative w-40 sm:w-48 md:w-56 lg:w-64 xl:w-72 2xl:w-[18.5rem] aspect-[2179/3442]">
             <img
-              className="w-full h-full object-contain drop-shadow-2xl"
-              src="/images/real.png"
+              src="images/myimage.jpeg"
               alt="Pranitha Gaddam"
+              className="h-full w-full rounded-lg border border-black/30 dark:border-white/30 object-cover shadow-[0_18px_45px_rgba(0,0,0,0.35)]"
             />
+            <div className="pointer-events-none absolute inset-0 "></div>
           </div>
         </motion.div>
 
