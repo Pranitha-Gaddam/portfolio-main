@@ -11,7 +11,7 @@ export function HeroSection() {
   const fullText = "Hi! I'm Pranitha.";
   
   useEffect(() => {
-    // 1. FAST TIMING: Starts at 2.6s to match slide exit
+    // 1. TIMING: Starts at 2.6s
     const startDelay = 2600; 
     let typeTimer: NodeJS.Timeout;
 
@@ -36,126 +36,124 @@ export function HeroSection() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
 
-  // ===== Three.js background logic =====
+  // ===== Three.js background logic (Refined Colors) =====
   useEffect(() => {
     let cleanup = () => {};
     (async () => {
       if (!containerRef.current) return;
 
       const THREE = (await import("three")) as typeof import("three");
-      const { TorusKnotGeometry, BufferGeometry, Float32BufferAttribute } = THREE;
 
-      const isSmallScreen =
-        typeof window !== "undefined" &&
-        window.matchMedia &&
-        window.matchMedia("(max-width: 640px)").matches;
+      const isMobile = window.matchMedia("(max-width: 640px)").matches;
 
+      // Renderer Setup
       const renderer = new THREE.WebGLRenderer({
         antialias: true,
         alpha: true,
         canvas: canvasRef.current || undefined,
       });
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, isSmallScreen ? 1.75 : 2));
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
       const bounds = containerRef.current.getBoundingClientRect();
       renderer.setSize(bounds.width, bounds.height, false);
       renderer.setClearColor(0x000000, 0);
 
       const scene = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera(55, bounds.width / bounds.height, 0.1, 100);
-      camera.position.set(0, 0.6, 12);
+      
+      const camera = new THREE.PerspectiveCamera(50, bounds.width / bounds.height, 0.1, 100);
+      camera.position.set(0, 18, 15);
+      camera.lookAt(0, 0, 0);
 
+      // --- CONFIGURATION ---
+      const rows = isMobile ? 60 : 100;
+      const cols = isMobile ? 40 : 120;
+      const spacing = 0.55; 
+      const particleCount = rows * cols;
+
+      const geometry = new THREE.SphereGeometry(0.03, 8, 8); 
+      
+      const material = new THREE.MeshBasicMaterial({
+        color: 0xffffff,
+        transparent: true,
+        opacity: 0.4, // Slight bump in opacity for better visibility of the new warm gray
+      });
+
+      const mesh = new THREE.InstancedMesh(geometry, material, particleCount);
+      scene.add(mesh);
+
+      const dummy = new THREE.Object3D();
+      const color = new THREE.Color();
+
+      // --- COLOR THEME LOGIC (UPDATED) ---
       const getThemeColors = () => {
         const isDark = document.documentElement.classList.contains("dark");
         if (isDark) {
-          return {
-            primary: new THREE.Color(0xd97706),
-            accent: new THREE.Color(0x1f2937),
-            ring: new THREE.Color(0x1f2937),
-          };
+            return {
+                // Dark Mode: Neutral Gray (not blue-ish)
+                base: new THREE.Color(0x525252), // Neutral-600
+                // Dark Mode Hover: Bright Amber Glow
+                hover: new THREE.Color(0xfbbf24), // Amber-400
+            };
         } else {
-          return {
-            primary: new THREE.Color(0xd97706),
-            accent: new THREE.Color(0xfbbf24),
-            ring: new THREE.Color(0xe5e7eb),
-          };
+            return {
+                // Light Mode: Warm Stone Gray (Matches Amber theme better than Slate)
+                base: new THREE.Color(0xa8a29e), // Stone-400
+                // Light Mode Hover: Deep Vibrant Orange (High Contrast)
+                hover: new THREE.Color(0xea580c), // Orange-600
+            };
         }
       };
-
       let themeColors = getThemeColors();
-      const group = new THREE.Group();
-      scene.add(group);
 
-      const baseGeom = new TorusKnotGeometry(4.2, 0.9, 900, 80, 2, 3);
-      const pos = baseGeom.getAttribute("position");
-      const vertexCount = pos.count;
-      const sampleCount = 9000;
-      
-      const positions: number[] = [];
-      const colors: number[] = [];
-      const initialIndices: number[] = [];
+      // Mouse State
+      const mouse = new THREE.Vector2(-1000, -1000); 
+      const raycaster = new THREE.Raycaster();
+      const plane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0); 
 
-      for (let i = 0; i < sampleCount; i++) {
-        const idx = Math.floor(Math.random() * vertexCount);
-        initialIndices.push(idx);
-        const x = pos.getX(idx), y = pos.getY(idx), z = pos.getZ(idx);
-        positions.push(x, y, z);
-        colors.push(0, 0, 0);
+      // Interaction Variables
+      let hoverX = -1000;
+      let hoverZ = -1000;
+      let clickWave = 0; 
+
+      // Initialize Grid
+      const initialPositions = new Float32Array(particleCount * 3);
+      let i = 0;
+      for (let x = 0; x < cols; x++) {
+        for (let z = 0; z < rows; z++) {
+          const posX = (x - cols / 2) * spacing;
+          const posZ = (z - rows / 2) * spacing;
+          
+          dummy.position.set(posX, 0, posZ);
+          dummy.updateMatrix();
+          mesh.setMatrixAt(i, dummy.matrix);
+          mesh.setColorAt(i, themeColors.base);
+          
+          initialPositions[i * 3] = posX;
+          initialPositions[i * 3 + 1] = 0;
+          initialPositions[i * 3 + 2] = posZ;
+          i++;
+        }
       }
+      mesh.instanceMatrix.needsUpdate = true;
+      if (mesh.instanceColor) mesh.instanceColor.needsUpdate = true;
 
-      const geo = new BufferGeometry();
-      geo.setAttribute("position", new Float32BufferAttribute(positions, 3));
-      geo.setAttribute("color", new Float32BufferAttribute(colors, 3));
+      // --- EVENT LISTENERS ---
+      const onMouseMove = (event: MouseEvent) => {
+        if (!containerRef.current) return;
+        const rect = containerRef.current.getBoundingClientRect();
+        mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+        mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+      };
 
-      const mat = new THREE.PointsMaterial({
-        size: 0.04,
-        vertexColors: true,
-        transparent: true,
-        opacity: 0.85,
-        depthWrite: false,
-        blending: THREE.NormalBlending, 
-      });
+      const onMouseDown = () => {
+        clickWave = 1; 
+      };
 
-      const points = new THREE.Points(geo, mat);
-      group.add(points);
-
-      const rings: THREE.Line[] = [];
-      const ringMat = new THREE.LineBasicMaterial({
-        color: themeColors.ring,
-        transparent: true,
-        opacity: 0.2,
-      });
-
-      for (let i = 0; i < 3; i++) {
-        const ringGeo = new THREE.RingGeometry(3.6 + i * 0.7, 3.62 + i * 0.7, 256);
-        const ringPos = ringGeo.getAttribute("position");
-        const lineGeo = new THREE.BufferGeometry();
-        lineGeo.setAttribute("position", new THREE.Float32BufferAttribute(ringPos.array as ArrayLike<number>, 3));
-        const line = new THREE.LineLoop(lineGeo, ringMat);
-        line.rotation.x = Math.random() * 0.8 - 0.4;
-        line.rotation.y = Math.random() * 0.8 - 0.4;
-        line.rotation.z = Math.random() * Math.PI;
-        rings.push(line);
-        group.add(line);
-      }
+      window.addEventListener("mousemove", onMouseMove);
+      window.addEventListener("mousedown", onMouseDown);
 
       const updateTheme = () => {
         themeColors = getThemeColors();
-        const tmpColor = new THREE.Color();
-        const colorAttribute = geo.getAttribute("color") as THREE.BufferAttribute;
-
-        for (let i = 0; i < sampleCount; i++) {
-            const idx = initialIndices[i];
-            const x = pos.getX(idx), y = pos.getY(idx), z = pos.getZ(idx);
-            const d = new THREE.Vector3(x, y, z).length();
-            tmpColor.copy(themeColors.primary).lerp(themeColors.accent, THREE.MathUtils.clamp((d - 3.5) / 4.5, 0, 1));
-            colorAttribute.setXYZ(i, tmpColor.r, tmpColor.g, tmpColor.b);
-        }
-        colorAttribute.needsUpdate = true;
-        ringMat.color.copy(themeColors.ring);
       };
-
-      updateTheme();
-
       const observer = new MutationObserver((mutations) => {
         mutations.forEach((mutation) => {
             if (mutation.attributeName === 'class') {
@@ -165,13 +163,91 @@ export function HeroSection() {
       });
       observer.observe(document.documentElement, { attributes: true });
 
-      const calcMotionScale = () => {
-        const w = containerRef.current?.getBoundingClientRect().width ?? 1024;
-        return Math.min(1, Math.max(0.6, w / 1024));
-      };
-      let motionScale = calcMotionScale();
+      // --- ANIMATION LOOP ---
       const clock = new THREE.Clock();
       let rafId = 0;
+
+      const animate = () => {
+        const time = clock.getElapsedTime();
+
+        // 1. Raycast
+        raycaster.setFromCamera(mouse, camera);
+        const target = new THREE.Vector3();
+        raycaster.ray.intersectPlane(plane, target);
+        
+        if (target) {
+            hoverX += (target.x - hoverX) * 0.1;
+            hoverZ += (target.z - hoverZ) * 0.1;
+        }
+
+        // 2. Click Wave
+        if (clickWave > 0) {
+            clickWave += 0.5; 
+            if (clickWave > 50) clickWave = 0; 
+        }
+
+        // 3. Update Instances
+        let index = 0;
+        for (let x = 0; x < cols; x++) {
+            for (let z = 0; z < rows; z++) {
+                
+                const posX = initialPositions[index * 3];
+                const posZ = initialPositions[index * 3 + 2];
+                const dist = Math.sqrt((posX - hoverX) ** 2 + (posZ - hoverZ) ** 2);
+                
+                let y = 0;
+                let scale = 1;
+                let r = themeColors.base.r;
+                let g = themeColors.base.g;
+                let b = themeColors.base.b;
+
+                // A. MOUSE PROXIMITY 
+                if (dist < 4) {
+                    const force = 1 - (dist / 4); 
+                    y = force * 2; 
+                    scale = 1 + force * 1.2; 
+                    
+                    // Boosted Color Mix: Multiplied force to make color appear faster
+                    // 0.8 factor makes the orange stick around longer/stronger
+                    const colorForce = Math.min(force * 1.5, 1); 
+                    
+                    r = r + (themeColors.hover.r - r) * colorForce;
+                    g = g + (themeColors.hover.g - g) * colorForce;
+                    b = b + (themeColors.hover.b - b) * colorForce;
+                }
+
+                // B. AMBIENT WAVE
+                y += Math.sin(posX * 0.3 + time) * Math.cos(posZ * 0.3 + time) * 0.15;
+
+                // C. CLICK WAVE
+                if (clickWave > 0) {
+                    const waveDist = Math.abs(dist - clickWave);
+                    if (waveDist < 1.0) {
+                        const waveForce = 1 - (waveDist / 1.0);
+                        y += waveForce * 1.5;
+                        scale += waveForce * 0.5;
+                    }
+                }
+
+                dummy.position.set(posX, y, posZ);
+                dummy.scale.set(scale, scale, scale);
+                dummy.updateMatrix();
+                mesh.setMatrixAt(index, dummy.matrix);
+                
+                color.setRGB(r, g, b);
+                mesh.setColorAt(index, color);
+
+                index++;
+            }
+        }
+        
+        mesh.instanceMatrix.needsUpdate = true;
+        if (mesh.instanceColor) mesh.instanceColor.needsUpdate = true;
+
+        renderer.render(scene, camera);
+        rafId = requestAnimationFrame(animate);
+      };
+      animate();
 
       const onResize = () => {
         if (!containerRef.current) return;
@@ -179,39 +255,17 @@ export function HeroSection() {
         renderer.setSize(width, height, false);
         camera.aspect = width / height;
         camera.updateProjectionMatrix();
-        motionScale = calcMotionScale();
       };
       window.addEventListener("resize", onResize);
 
-      const animate = () => {
-        const t = clock.getElapsedTime();
-        const speedY = 0.108; 
-        const ringBaseSpeed = 0.048; 
-        const ringIncSpeed = 0.018; 
-  
-        group.rotation.y = t * speedY * motionScale; 
-        group.rotation.x = Math.sin(t * 0.25 * motionScale) * 0.05;
-        const s = 1 + Math.sin(t * 0.6 * motionScale) * 0.02;
-        group.scale.set(s, s, s);
-  
-        rings.forEach((r, i) => {
-          r.rotation.z = t * (ringBaseSpeed + i * ringIncSpeed) * motionScale; 
-        });
-  
-        renderer.render(scene, camera);
-        rafId = requestAnimationFrame(animate);
-      };
-      animate();
-
       cleanup = () => {
         observer.disconnect();
-        cancelAnimationFrame(rafId);
+        window.removeEventListener("mousemove", onMouseMove);
+        window.removeEventListener("mousedown", onMouseDown);
         window.removeEventListener("resize", onResize);
-        baseGeom.dispose();
-        geo.dispose();
-        mat.dispose();
-        ringMat.dispose();
-        rings.forEach((r) => r.geometry.dispose());
+        cancelAnimationFrame(rafId);
+        geometry.dispose();
+        material.dispose();
         renderer.dispose();
       };
     })();
@@ -232,7 +286,7 @@ export function HeroSection() {
       className="relative min-h-[100dvh] flex flex-col justify-center px-4 pt-24 pb-12 overflow-hidden"
     >
       <canvas ref={canvasRef} className="absolute inset-0 -z-10 w-full h-full" aria-hidden="true" />
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-white/70 dark:bg-black/40" aria-hidden="true" />
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-white/70 dark:bg-gray-900/40" aria-hidden="true" />
       <div className="pointer-events-none absolute inset-0 -z-20 bg-gradient-to-b from-background/0 via-background/40 to-background" />
 
       <div className="container mx-auto z-10 flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-16 max-w-6xl">
