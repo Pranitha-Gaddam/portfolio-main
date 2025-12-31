@@ -303,7 +303,7 @@ export function HeroSection() {
               <span className="
                 inline-block pb-2 pr-1
                 bg-gradient-to-r from-orange-700 via-amber-600 to-orange-700
-                dark:from-amber-600 dark:via-yellow-400 dark:to-amber-600
+                dark:from-amber-600 dark:via-amber-400 dark:to-amber-600
                 bg-clip-text text-transparent 
                 font-extrabold
               ">
