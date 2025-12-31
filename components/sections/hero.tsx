@@ -296,14 +296,14 @@ export function HeroSection() {
           
           <div className="min-h-[3rem] sm:min-h-[4rem] flex items-center justify-center lg:justify-start">
             <h1 className="font-playfair font-bold text-3xl sm:text-5xl lg:text-6xl tracking-wide drop-shadow-sm">
-              <span className="text-amber-600 dark:text-amber-500">
+              <span className="text-amber-600 dark:text-amber-400">
                 {displayedText.slice(0, 8)}
               </span>
               
               <span className="
                 inline-block pb-2 pr-1
                 bg-gradient-to-r from-orange-700 via-amber-600 to-orange-700
-                dark:from-amber-600 dark:via-amber-400 dark:to-amber-600
+                dark:from-amber-500 dark:via-amber-400 dark:to-amber-500
                 bg-clip-text text-transparent 
                 font-extrabold
               ">
@@ -356,7 +356,7 @@ export function HeroSection() {
               transition={{ delay: 3.1, duration: 0.6 }}
               className="flex flex-wrap justify-center gap-3 sm:gap-4"
             >
-              <Button asChild className="bg-amber-500 group hover:bg-amber-600 dark:bg-amber-600 dark:hover:bg-amber-700 text-white px-6 shadow-md h-10 text-sm sm:text-base">
+              <Button asChild className="bg-amber-500 group hover:bg-amber-600 dark:bg-amber-500/90 dark:hover:bg-amber-600 text-white px-6 shadow-md h-10 text-sm sm:text-base">
                 <a 
                   href="https://drive.google.com/file/d/138G18CQ4so7Hrbc3phSTi9pR6tt_uTR1/view?usp=sharing" 
                   target="_blank" 
