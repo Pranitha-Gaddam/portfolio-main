@@ -1,11 +1,10 @@
 # Portfolio Website
 
-A modern, responsive, and interactive portfolio website built with **Next.js** to showcase projects, experience, and skills and designed for high performance, accessibility, and visual appeal.
+A modern, responsive, and interactive portfolio website built with **Next.js** to showcase projects, experience, and skills.
 
-[🌐 View Live on Vercel](https://portfolio-main-1s9o6gsfo-pranitha-gaddams-projects.vercel.app)
-
-<img width="1512" height="856" alt="Screenshot 2025-08-14 at 5 28 31 PM" src="https://github.com/user-attachments/assets/cb023650-f940-4e76-aa36-99370c3ab015" /> <!-- optional: add screenshot image -->
-<img width="1512" height="861" alt="Screenshot 2025-08-14 at 5 30 02 PM" src="https://github.com/user-attachments/assets/3d7107c6-ec6a-47c3-a99b-b3802acd27e6" />
+[🌐 View Live](https://pranithagaddam.site)
+<img width="1920" height="985" alt="Portfolio Screenshot Light Mode" src="https://github.com/user-attachments/assets/847bbdce-03d1-4486-84f5-92ab13cb551f" />
+<img width="1920" height="985" alt="Portfolio Screenshot Dark Mode" src="https://github.com/user-attachments/assets/dc6432eb-93a4-439d-81e5-00c1870ea8f7" />
 
 ---
 
