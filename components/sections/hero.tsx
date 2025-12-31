@@ -286,7 +286,7 @@ export function HeroSection() {
       className="relative min-h-[100dvh] flex flex-col justify-center px-4 pt-24 pb-12 overflow-hidden"
     >
       <canvas ref={canvasRef} className="absolute inset-0 -z-10 w-full h-full" aria-hidden="true" />
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-white/70 dark:bg-gray-900/40" aria-hidden="true" />
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-white/60 dark:bg-gray-900/40" aria-hidden="true" />
       <div className="pointer-events-none absolute inset-0 -z-20 bg-gradient-to-b from-background/0 via-background/40 to-background" />
 
       <div className="container mx-auto z-10 flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-16 max-w-6xl">
@@ -363,7 +363,7 @@ export function HeroSection() {
                   rel="noopener noreferrer"
                 >
                   <span className="mr-1">Resume</span>
-                  <ArrowUpRight className="w-4 h-4 ml-1 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                  <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </a>
               </Button>
               <Button
