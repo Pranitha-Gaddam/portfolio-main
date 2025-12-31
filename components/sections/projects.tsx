@@ -97,9 +97,6 @@ export function ProjectsSection() {
             Featured Projects
           </h2>
           <div className="w-20 h-1 bg-amber-500 mx-auto mb-4" />
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            A showcase of my recent work and personal projects that demonstrate my skills and passion for development.
-          </p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
