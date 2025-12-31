@@ -15,10 +15,9 @@ const experienceData = [
     duration: "May 2025 - July 2025",
     type: "Internship",
     achievements: [
-      'Built and optimized platform features for 35,000+ daily users',
-      'Contributed to a projected $250K operational savings over five years.',
-      'Worked across the full stack: Angular UI, microservices, database tuning, testing and deployment on Azure CI/CD',
+      'Built features for 35,000+ daily users and improved app performance',
       'Built and integrated AI tools into internal developer workflows',
+      'Contributed to a projected $250K operational savings over five years.',
     ],
     technologies: [
       "TypeScript", "Angular", "Java", "Spring Boot", "MongoDB", "Elasticsearch",
