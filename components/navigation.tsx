@@ -51,13 +51,21 @@ export function Navigation() {
     href: string
   ) => {
     e.preventDefault(); 
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    setIsOpen(false);
+
     setTimeout(() => {
-      setIsOpen(false);
-    }, 300);
+      const element = document.querySelector(href);
+      if (element) {
+        const headerOffset = 85;
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.scrollY - headerOffset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }, 350); 
   };
 
   if (!mounted) return null;

@@ -1,10 +1,9 @@
 // app/api/contact/route.ts
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
+
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
-
-const resend = new Resend(process.env.RESEND_API_KEY);
 
 function escapeHtml(s: string) {
   return s.replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]!));
@@ -12,7 +11,9 @@ function escapeHtml(s: string) {
 
 export async function POST(req: Request) {
     try {
-        console.log("RESEND_FROM value:", process.env.RESEND_FROM);
+      const resend = new Resend(process.env.RESEND_API_KEY);
+      
+      console.log("RESEND_FROM value:", process.env.RESEND_FROM);
       const body = await req.json();
       console.log("Incoming form data:", body);
   
@@ -34,5 +35,4 @@ export async function POST(req: Request) {
       console.error("Route error:", err);
       return NextResponse.json({ error: err.message || "Unknown error" }, { status: 500 });
     }
-  }
-  
+}

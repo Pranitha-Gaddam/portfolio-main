@@ -57,7 +57,7 @@ const projectsData = [
     featured: false
   },
   {
-    id: 5,
+    id: 6,
     title: "Automated File Downloader",
     description: "A python script using the Google Cloud Platform (GCP) to automatically download files from a folder in Google Drive to a local folder on your device.",
     image: "images/script.png",
@@ -67,7 +67,7 @@ const projectsData = [
     featured: false
   },
   {
-  id: 6,
+  id: 7,
     title: "Job Scheduler",
     description: "A Simulated Annealing agent created to maximize work scheduling.",
     image: "images/jobscheduler.png",
