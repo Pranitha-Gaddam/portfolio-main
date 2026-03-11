@@ -9,6 +9,19 @@ import { Badge } from '@/components/ui/badge';
 const experienceData = [
   {
     id: 1,
+    title: "Software Developer",
+    company: "Reynolds and Reynolds",
+    location: "Houston, TX",
+    duration: "Feb 2026 - Present",
+    type: "Full-time",
+    achievements: [
+      "Analyzed 50+ Unity accessibility plugins against WCAG 2.0 to uncover major compliance gaps.",
+      "Built a Unity plugin with 14 automated accessibility checks and automated compliance reporting."
+    ],
+    technologies: []
+  }
+  {
+    id: 2,
     title: "Software Engineering Intern",
     company: "J.B. Hunt Transport Services, Inc.",
     location: "Lowell, AR",
@@ -24,7 +37,7 @@ const experienceData = [
     ]
   },
   {
-    id: 2,
+    id: 3,
     title: "Accessibility Research",
     company: "University of North Texas",
     location: "Denton, TX",
