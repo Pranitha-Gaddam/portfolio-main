@@ -15,8 +15,6 @@ const experienceData = [
     duration: "Feb 2026 - Present",
     type: "Full-time",
     achievements: [
-      "Analyzed 50+ Unity accessibility plugins against WCAG 2.0 to uncover major compliance gaps.",
-      "Built a Unity plugin with 14 automated accessibility checks and automated compliance reporting."
     ],
     technologies: []
   },
