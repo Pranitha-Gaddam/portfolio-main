@@ -328,7 +328,7 @@ export function HeroSection() {
             */}
             <div className="pl-4 sm:pl-5 border-l-4 border-amber-500/40 dark:border-amber-500/60">
               <p className="text-sm sm:text-xl leading-loose text-slate-800 dark:text-slate-100 font-medium tracking-wide">
-                I&apos;m a recent Computer Science grad (Dec 2025). My primary interests are in{" "}
+                I&apos;m a Software Developer at Reynolds and Reynolds. My primary interests are in{" "}
                 <span className="inline-block px-1 rounded bg-amber-100 dark:bg-amber-900/40 text-amber-800 dark:text-amber-200 font-semibold">
                   full-stack engineering
                 </span>{" "}
@@ -341,7 +341,7 @@ export function HeroSection() {
               <div className="h-3 sm:h-6"></div>
               
               <p className="text-sm sm:text-xl leading-loose text-slate-800 dark:text-slate-100 font-medium tracking-wide">
-                My passion for computer science comes from my love for{" "}
+                My passion for software development comes from my love for{" "}
                 <span className="font-medium text-slate-900 dark:text-white">building things</span> and solving complex problems. In my free time, I like to play pickleball or video games, cook (and eat!), and travel.
               </p>
             </div>
