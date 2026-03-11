@@ -19,7 +19,7 @@ const experienceData = [
       "Built a Unity plugin with 14 automated accessibility checks and automated compliance reporting."
     ],
     technologies: []
-  }
+  },
   {
     id: 2,
     title: "Software Engineering Intern",
