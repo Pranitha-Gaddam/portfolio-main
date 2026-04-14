@@ -16,7 +16,7 @@ const experienceData = [
     type: "Full-time",
     achievements: [
     ],
-    technologies: []
+    technologies: ["React", "ASP.NET Core", "SQL Server", "Jenkins", "EF Core"]
   },
   {
     id: 2,
