@@ -70,7 +70,7 @@ export function ContactSection() {
     {
       icon: MapPin,
       label: 'Location',
-      value: 'Dallas, TX',
+      value: 'Houston, TX',
       href: '#'
     }
   ];
