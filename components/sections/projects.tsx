@@ -18,6 +18,16 @@ const projectsData = [
   },
   {
     id: 2,
+    title: "LLM Gateway",
+    description: "A drop-in caching proxy for the OpenAI API with exact and semantic cache tiers, so repeated and reworded questions are served from Redis instead of paid for again.",
+    image: "images/llmgateway.png",
+    technologies: ["Python", "FastAPI", "Redis Stack", "Vector Search", "Docker", "Fly.io"],
+    githubUrl: "https://github.com/Pranitha-Gaddam/llm-gateway",
+    liveUrl: "https://llm-gateway-demo.fly.dev/",
+    featured: true
+  },
+  {
+    id: 3,
     title: "Indoor Navigation System",
     description: "An Indoor Navigation System for UNT's Engineering Building, with multi-floor support and route optimization.",
     image: "images/indoornav.png",
@@ -27,7 +37,7 @@ const projectsData = [
     featured: true
   },
   {
-    id: 3,
+    id: 4,
     title: "Accessibility Plugin for Unity",
     description: "A Unity plugin that enhances game accessibility by guiding developers in detecting and resolving key accessibility issues.",
     image: "images/unity.png",
@@ -37,7 +47,7 @@ const projectsData = [
     featured: true
   },
   {
-    id: 4,
+    id: 5,
     title: "Pomodoro Study Timer",
     description: "A deep-focus Pomodoro timer with customizable timer, backgrounds, audio, and additional tools for productivity.",
     image: "images/pomodoro.png",
@@ -47,7 +57,7 @@ const projectsData = [
     featured: true
   },
   {
-    id: 5,
+    id: 6,
     title: "RAG Semantic Search - Base Implementation",
     description: "A simple Retrieval-Augmented Generation (RAG) based semantic document search, which lets you search by meaning, not just keywords. Perfect for learning how RAG systems work!",
     image: "images/rag.png",
@@ -57,7 +67,7 @@ const projectsData = [
     featured: false
   },
   {
-    id: 6,
+    id: 7,
     title: "Automated File Downloader",
     description: "A python script using the Google Cloud Platform (GCP) to automatically download files from a folder in Google Drive to a local folder on your device.",
     image: "images/script.png",
@@ -67,7 +77,7 @@ const projectsData = [
     featured: false
   },
   {
-  id: 7,
+  id: 8,
     title: "Job Scheduler",
     description: "A Simulated Annealing agent created to maximize work scheduling.",
     image: "images/jobscheduler.png",
