@@ -20,7 +20,7 @@ const projectsData = [
     id: 2,
     title: "LLM Gateway",
     description: "A drop-in caching proxy for the OpenAI API with exact and semantic cache tiers, so repeated and reworded questions are served from Redis instead of paid for again.",
-    image: "images/llmgateway.png",
+    image: "images/llm-gateway.svg",
     technologies: ["Python", "FastAPI", "Redis Stack", "Vector Search", "Docker", "Fly.io"],
     githubUrl: "https://github.com/Pranitha-Gaddam/llm-gateway",
     liveUrl: "https://llm-gateway-demo.fly.dev/",
