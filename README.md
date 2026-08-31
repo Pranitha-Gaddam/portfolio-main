@@ -8,16 +8,13 @@ A modern, responsive, and interactive portfolio website built with **Next.js** t
 
 ---
 
-## 🚀 Notable Features
+## Notable Features
 
-- **🎨 Responsive Design** – Looks great on mobile, tablet, and desktop.
-- **🌓 Dark & Light Mode** – Theme toggle for personalized viewing.
-- **✨ Three.js Particle Background** – Custom particle system with mouse interaction for an immersive landing page.
-- **🎬 Smooth Animations** – Framer Motion transitions for a polished, professional feel.
-- **📩 Contact Form with Email Sending** – Secure integration with [Resend](https://resend.com/) API for direct inbox delivery, including spam prevention via honeypot fields.
-- **🔗 Social Media Integration** – Quick links to GitHub, LinkedIn, and other profiles.
-- **♻️ Modular Components** – Reusable ShadCN UI + Tailwind CSS components for maintainability.
-- **⚡ Performance & SEO Optimized** – Fast page loads, semantic HTML, and metadata for better search rankings.
+- Responsive design + Dark & Light Mode
+- Three.js particle background (custom particle system with mouse interaction)
+- Contact Form with Email Sending – Secure integration with [Resend](https://resend.com/) API for direct inbox delivery, including spam prevention via honeypot fields.
+- Reusable ShadCN UI + Tailwind CSS components for maintainability.
+- Performance & SEO Optimized (Fast page loads, semantic HTML, and metadata for better search rankings)
 
 ---
 
