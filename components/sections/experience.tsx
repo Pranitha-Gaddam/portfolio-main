@@ -15,6 +15,7 @@ const experienceData = [
     duration: "Feb 2026 - Present",
     type: "Full-time",
     achievements: [
+        'Engineering full-stack features for a fintech platform connecting dealerships and lenders to process 4M+ auto loan applications.'
     ],
     technologies: ["React", "ASP.NET Core", "SQL Server", "Jenkins", "EF Core"]
   },
@@ -26,12 +27,11 @@ const experienceData = [
     duration: "May 2025 - July 2025",
     type: "Internship",
     achievements: [
-      'Built features for 35,000+ daily users and improved app performance.',
-      'Contributed to a projected $250K operational savings over five years.',
+      'Built the Account Panel feature with live tracking metrics for a platform with 35,000+ daily users.',
     ],
     technologies: [
-      "TypeScript", "Angular", "Java", "Spring Boot", "MongoDB", "Elasticsearch",
-      "Redis", "BigQuery", "Kubernetes", "Azure", "Git", "RAG"
+      "TypeScript", "Angular", "Java", "Spring Boot", "MongoDB", "Elasticsearch", "Kafka",
+      "Redis", "Kubernetes", "Azure"
     ]
   },
   {
@@ -42,8 +42,8 @@ const experienceData = [
     duration: "Aug 2024 - Dec 2024",
     type: "Research",
     achievements: [
-      "Analyzed 50+ Unity accessibility plugins against WCAG 2.0 to uncover major compliance gaps.",
-      "Built a Unity plugin with 14 automated accessibility checks and automated compliance reporting."
+      "Analyzed 50+ Unity accessibility plugins to uncover major compliance gaps.",
+      'Built a Unity plugin with 14 accessibility checks covering various visual, auditory, and interaction criteria and added auto-generated compliance reporting.'
     ],
     technologies: ["Unity", "C#", '.NET', "AWS Polly", "OpenAI API"]
   }

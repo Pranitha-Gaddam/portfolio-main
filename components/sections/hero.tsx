@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, ArrowUpRight } from "lucide-react";
+import { Github, Linkedin, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export function HeroSection() {
@@ -96,7 +96,7 @@ export function HeroSection() {
               
               <p className="text-sm sm:text-xl leading-loose text-slate-800 dark:text-slate-100 font-medium tracking-wide">
                 My passion for software development comes from my love for{" "}
-                <span className="font-medium text-slate-900 dark:text-white">building things</span> and solving complex problems. In my free time, I like to play pickleball or video games, cook (and eat!), and travel.
+                <span className="font-medium text-slate-900 dark:text-white">building things</span> and solving complex problems. In my free time, I like to read or play video games, cook (and eat!), and travel.
               </p>
             </div>
           </motion.div>
@@ -110,16 +110,6 @@ export function HeroSection() {
               transition={{ delay: 3.1, duration: 0.6 }}
               className="flex flex-wrap justify-center gap-3 sm:gap-4"
             >
-              <Button asChild className="bg-amber-500 group hover:bg-amber-600 dark:bg-amber-500/90 dark:hover:bg-amber-600 text-white px-6 shadow-md h-10 text-sm sm:text-base">
-                <a 
-                  href="https://drive.google.com/file/d/138G18CQ4so7Hrbc3phSTi9pR6tt_uTR1/view?usp=sharing" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                >
-                  <span className="mr-1">Resume</span>
-                  <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                </a>
-              </Button>
               <Button
                 variant="outline"
                 onClick={() => document.querySelector("#projects")?.scrollIntoView({ behavior: "smooth" })}
