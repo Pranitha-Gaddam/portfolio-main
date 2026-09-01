@@ -32,7 +32,7 @@ const config: Config = {
         "portfolio-dark": "#020617", // Slate-950 (Deep dark background)
         "portfolio-amber": "#f59e0b", // Amber-600 (Primary Brand Color)
         "portfolio-amber-dark": "#b45309",
-        background: 'hsl(var(--background))',
+        background: 'hsl(var(--background) / <alpha-value>)',
         foreground: 'hsl(var(--foreground))',
         card: {
           DEFAULT: 'hsl(var(--card))',

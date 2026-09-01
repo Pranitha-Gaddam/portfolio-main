@@ -2,6 +2,7 @@ import './globals.css';
 import { Inter, Playfair_Display, Bad_Script, Playfair_Display_SC } from 'next/font/google';
 import { ThemeProvider } from '@/providers/theme-provider';
 import { Navigation } from '@/components/navigation';
+import { ThreeBackground } from '@/components/three-background';
 import { Footer } from '@/components/footer';
 import { Analytics } from "@vercel/analytics/next";
 import { GoogleAnalytics } from '@next/third-parties/google';
@@ -45,8 +46,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             enableSystem={false}
             disableTransitionOnChange={false}
           >
+            <ThreeBackground />
             <Navigation />
-            <main className="min-h-screen">{children}</main>
+            <main className="relative z-10 min-h-screen">{children}</main>
             <Analytics />
             <Footer />
           </ThemeProvider>

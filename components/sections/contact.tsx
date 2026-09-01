@@ -81,7 +81,7 @@ export function ContactSection() {
   ];
 
   return (
-    <section id="contact" className="py-20 bg-gradient-to-br from-amber-50 to-orange-50 dark:from-gray-900 dark:to-gray-800">
+    <section id="contact" className="py-20">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
