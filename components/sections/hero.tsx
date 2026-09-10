@@ -95,8 +95,7 @@ export function HeroSection() {
               <div className="h-3 sm:h-6"></div>
               
               <p className="text-sm sm:text-xl leading-loose text-slate-800 dark:text-slate-100 font-medium tracking-wide">
-                I'm extremely curious by nature and always exploring new tools and tech, and my passion for software development comes from my love for{" "}
-                <span className="font-medium text-slate-900 dark:text-white">building things</span> and solving complex problems. In my free time, I like to read or play video games, cook (and eat!), and travel.
+                My passion for software development comes from my love for building things and solving complex problems. I'm also extremely curious by nature and always exploring new tools and tech. Outside of work, you'll find me lost in a good book or video game, experimenting with cooking, or planning my next trip.
               </p>
             </div>
           </motion.div>
