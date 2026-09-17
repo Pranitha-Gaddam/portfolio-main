@@ -3,8 +3,6 @@
 A modern, responsive, and interactive portfolio website built with **Next.js** to showcase projects, experience, and skills.
 
 [🌐 View Live](https://pranithagaddam.me)
-<img width="1920" height="985" alt="Portfolio Screenshot Light Mode" src="https://github.com/user-attachments/assets/847bbdce-03d1-4486-84f5-92ab13cb551f" />
-<img width="1920" height="985" alt="Portfolio Screenshot Dark Mode" src="https://github.com/user-attachments/assets/dc6432eb-93a4-439d-81e5-00c1870ea8f7" />
 
 ---
 
