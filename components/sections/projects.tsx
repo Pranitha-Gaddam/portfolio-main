@@ -8,14 +8,17 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 
 const projectsData = [
-  {
-    id: 1,
-    title: "Multi-Modal Knowledge Assistant",
-    description: "(Ongoing) An AI-powered knowledge assistant that merges text, media, and documents into a unified RAG-based retrieval system with customizable agentic workflows.",
-    image: "images/multimodal.png",
-    technologies: ["Python", "TypeScript", "Next.js", "LangChain", "FAISS", "RAG"],
-    featured: true
-  },
+{
+  id: 1,
+  title: "Multi-Modal Knowledge Assistant",
+  description: "A RAG engine over NASA's Apollo 11 archive that searches documents, scanned pages, photos, podcasts and video from a single query. Every answer cites the exact line, page or timestamp it came from.",
+  image: "images/multimodal.png",
+  technologies: ["Python", "FastAPI", "PostgreSQL", "pgvector", "TypeScript", "Next.js", "Claude API", "Docker", "Fly.io"],
+  githubUrl: "https://github.com/Pranitha-Gaddam/multimodal-project",
+  liveUrl: "https://multimodal-project-peach.vercel.app/",
+  featured: true
+},
+
   {
     id: 2,
     title: "LLM Gateway",
